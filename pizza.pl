@@ -1,6 +1,5 @@
 use Irssi;
 use strict;
-use Time::Local;
 use vars qw($VERSION %IRSSI);
 
 $VERSION = "1.0";
@@ -32,7 +31,6 @@ sub pizza {
     return my $pie = join " ", "pizza", random_word();
 }
 
-my $start_time = time();
 Irssi::signal_add 'message public', 'sig_message_public';
 
 sub sig_message_public {
