@@ -16,16 +16,16 @@ $VERSION = "1.0";
 sub pizza {
 	sub random_word {
 		my $file = './nouns.txt';
-        open(INFO, $file);
-        my @lines = <INFO>;
-        my $line; 
-        my $i = 0;
-        foreach(@lines) {
-            $i++;
-            my $random_number = int(rand($i + 2));
-            if ($random_number > 0) {next;}
-            $line = $lines[$i];
-        }
+	        open(INFO, $file);
+	        my @lines = <INFO>;
+	        my $line; 
+	        my $i = 0;
+	        foreach(@lines) {
+	            $i++;
+	            my $random_number = int(rand($i + 2));
+	            if ($random_number > 0) {next;}
+	            $line = $lines[$i];
+	        }
         return $line;
 	}
 
