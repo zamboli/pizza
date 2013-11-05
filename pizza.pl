@@ -6,34 +6,16 @@ use vars qw($VERSION %IRSSI);
 $VERSION = "1.0";
 %IRSSI = (
     authors     => 'zamboli',
-    name        => 'PizzaBot 9000',
+    name        => 'pizza noun',
     contact=> '',
     description => 'pizza generator',
     license     => 'Public Domain',
     changed=> 'HAHAHA'
     );
-=pod
-use Inline Python => <<'END_PYTHON';
-def pizza():
-    import random
-    
-    def random_line(afile):
-        line = next(afile)
-        for num, aline in enumerate(afile):
-            if random.randrange(num + 2): continue
-            line = aline
-        return line
 
-    noun_file = open('/Users/greg/.irssi/scripts/nouns.txt', 'r')
-    pizza = "pizza %s" % str(random_line(noun_file)).rstrip()
-    noun_file.close()
-    return pizza
-
-END_PYTHON
-=cut
 sub pizza {
 	sub random_word {
-		my $file = '/Users/greg/.irssi/scripts/nouns.txt';
+		my $file = './nouns.txt';
         open(INFO, $file);
         my @lines = <INFO>;
         my $line; 
@@ -62,14 +44,3 @@ sub sig_message_public {
 	Irssi::print("$target : $nick : $pizza");
     }
 }
-
-#sub cmd_pizza {
-#    my ($server, $witem) = @_;
-#    my $pizza = pizza();
-#    my $target = "#macinto
-#sh";
-#    $server->command("msg $witem $pizza"); # if ($msg =~ m/hello/i);                                                                                      
-#    Irssi::print("$target : me : $pizza");
-#}
-
-#Irssi::command_bind('pizza', 'cmd_pizza');
